@@ -3,6 +3,13 @@ const loader = document.getElementById("loader");
 
 let photosArray = [];
 
+// Helper Function to Set Attributes on DOM Elements
+setAttributes = (element, attributes) => {
+  for (const key in attributes) {
+    element.setAttribute(key, attributes[key]);
+  }
+};
+
 // Create Elements for Links & Photos, Add to document
 displayPhotos = () => {
   // Run function for each pbject in photosArray
@@ -24,7 +31,7 @@ displayPhotos = () => {
 
 // Unsplash API
 const count = 15;
-const apiKey = "PfAKg3uROx6GtFDW4HJ06y6-aZA1j-jMhkSWCMQeDBI";
+const apiKey = "KDvQNdCstwIOfToXwyFQT9v14_WaNgPies1BPioq630";
 const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 // Get photos from API
@@ -32,11 +39,11 @@ async function getPhotos() {
   try {
     const response = await fetch(apiURL);
     photosArray = await response.json();
-    console.log(photosArray);
+    displayPhotos();
   } catch (error) {
     // Catch Error
   }
 }
-
+console.log();
 // On Load
 getPhotos();
