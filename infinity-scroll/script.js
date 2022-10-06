@@ -27,6 +27,8 @@ displayPhotos = () => {
         alt: photo.alt_description,
         title: photo.alt_description,
     });
+    // Event Listener, check when each img is finished Loading
+    img.addEventListener('load', imageLoaded);
     // Put <img> inside <a>, then put both inside imgContainer Element
     item.appendChild(img);
     imgContainer.appendChild(item);
